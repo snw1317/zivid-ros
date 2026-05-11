@@ -51,6 +51,10 @@ zivid_add_cpp_sample(sample_intrinsics DEPENDENCIES rclcpp sensor_msgs std_srvs)
 zivid_add_cpp_sample(sample_projection DEPENDENCIES rclcpp std_srvs zivid_interfaces)
 zivid_add_cpp_sample(sample_project_and_capture DEPENDENCIES rclcpp std_srvs sensor_msgs zivid_interfaces)
 
+add_executable(capture_2d_trigger src/capture_2d_trigger.cpp)
+ament_target_dependencies(capture_2d_trigger rclcpp std_srvs)
+install(TARGETS capture_2d_trigger DESTINATION lib/${PROJECT_NAME})
+
 zivid_add_cpp_sample(sample_with_sdk_capture_and_load_frame
   DEPENDENCIES
     rclcpp sensor_msgs std_srvs zivid_interfaces tf2 tf2_ros tf2_geometry_msgs

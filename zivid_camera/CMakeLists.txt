@@ -59,10 +59,6 @@ rclcpp_components_register_node(${ZIVID_DRIVER_COMPONENT_NAME}
                                 EXECUTABLE
                                 "zivid_camera")
 
-add_executable(capture_2d_trigger src/capture_2d_trigger.cpp)
-turn_on_compiler_warnings_if_enabled(capture_2d_trigger)
-ament_target_dependencies(capture_2d_trigger rclcpp std_srvs)
-
 target_link_libraries(${ZIVID_DRIVER_COMPONENT_NAME} Zivid::Core)
 set(ZIVID_DRIVER_DEPENDENCIES
     rclcpp_components
@@ -88,8 +84,6 @@ install(TARGETS ${ZIVID_DRIVER_COMPONENT_NAME}
         RUNTIME DESTINATION bin
         ARCHIVE DESTINATION lib
         LIBRARY DESTINATION lib)
-
-install(TARGETS capture_2d_trigger RUNTIME DESTINATION lib/${PROJECT_NAME})
 
 install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME})
